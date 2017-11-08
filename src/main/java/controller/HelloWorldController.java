@@ -27,7 +27,7 @@ public class HelloWorldController {
 	
 	@PostMapping("/stuff")
 	public ResponseEntity<Customer> writeCustomer(@RequestBody Customer customer) {
-		System.out.println(customer);
+		System.out.println(customer + "got a customer");
 		return new ResponseEntity<Customer>(customer, HttpStatus.OK);
 	}
 	
