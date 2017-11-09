@@ -3,19 +3,16 @@ package controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import objects.Customer;
-import respository.CustomerRepository;
+import services.CustomerService;
 
 @RestController
 public class HelloWorldController {
 	
 	@Autowired
-	private CustomerRepository customerRepository;
+	private CustomerService customerService;
 
 	@GetMapping("/")
 	public ResponseEntity<String> findAll() {
@@ -24,16 +21,19 @@ public class HelloWorldController {
 	
 	
 	@GetMapping("/stuff")
-	public Customer getJsonObject() {
-		Customer customer = new Customer("bob", "saget");
-		
-		return customer;
+	public Iterable<Customer> getJsonObject() {
+		return customerService.getAllCustomers();
+	}
+
+	@GetMapping(path = "/stuff",params = {"firstName"})
+	public Iterable<Customer> getJsonObject(@RequestParam("firstName") String firstName) {
+
+		return customerService.getCustomerByFirstName(firstName);
 	}
 	
 	@PostMapping("/stuff")
 	public ResponseEntity<Customer> writeCustomer(@RequestBody Customer customer) {
-		System.out.println(customer + "got a customer");
-		customer = customerRepository.save(customer);
+		customer = customerService.saveCustomer(customer);
 		return new ResponseEntity<Customer>(customer, HttpStatus.OK);
 	}
 }

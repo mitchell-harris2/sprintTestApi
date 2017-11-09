@@ -6,7 +6,7 @@ public class HelloWorldInitializer extends AbstractAnnotationConfigDispatcherSer
   
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[] { HelloWorldConfig.class };
+        return new Class[] { HelloWorldConfig.class, PersistenceContext.class };
     }
    
     @Override
