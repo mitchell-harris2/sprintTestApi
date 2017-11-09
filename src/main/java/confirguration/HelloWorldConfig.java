@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({"configuration", "controller"})
+@ComponentScan({"configuration", "controller", "objects", "repository"})
 public class HelloWorldConfig {
 
 }
