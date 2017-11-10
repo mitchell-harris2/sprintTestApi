@@ -99,4 +99,20 @@ public class HelloWorldControllerTest {
 
         verify(customerService, times(1)).getSortedCustomers();
     }
+
+    @Test
+    public void testGetCustomerSortedByLastName_hasPageNumber() throws Exception {
+
+        Customer bobSaget = new Customer("bob","saget");
+        Customer samIam = new Customer("sam","Iam");
+
+        List<Customer> sortedCustomers = Arrays.asList(
+                samIam, bobSaget
+        );
+        when(customerService.getSortedCustomers(0, 5)).thenReturn(sortedCustomers);
+
+        assertEquals(sortedCustomers, helloWorldController.getCustomersSortedByLastName(0));
+
+        verify(customerService, times(1)).getSortedCustomers(0, 5);
+    }
 }

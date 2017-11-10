@@ -49,4 +49,9 @@ public class HelloWorldController {
 	public List<Customer> getCustomersSortedByLastName() {
 		return customerService.getSortedCustomers();
 	}
+
+	@GetMapping(path="/sortedCustomers", params = {"page"})
+	public List<Customer> getCustomersSortedByLastName(@RequestParam("page") int pageNumber) {
+		return customerService.getSortedCustomers(pageNumber, 5);
+	}
 }

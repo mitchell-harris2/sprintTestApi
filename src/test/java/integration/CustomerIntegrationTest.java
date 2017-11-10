@@ -61,4 +61,22 @@ public class CustomerIntegrationTest {
                 .body("[5].lastName", is("vandelay"));
 
     }
+
+    @Test
+    public void testGetSortedCustomers_pageZero() {
+        ValidatableResponse response = given().queryParam("page", "0")
+                .when().get("/sortedCustomers").then()
+                .body("[0].lastName", is("baggins"))
+                .body("[1].lastName", is("Iam"))
+                .body("[2].lastName", is("marx"))
+                .body("[3].lastName", is("saget"))
+                .body("[4].lastName", is("shore"));
+    }
+
+    @Test
+    public void testGetSortedCustomers_pageOne() {
+        ValidatableResponse response = given().queryParam("page", "1")
+                .when().get("/sortedCustomers").then()
+                .body("[0].lastName", is("vandelay"));
+    }
 }
