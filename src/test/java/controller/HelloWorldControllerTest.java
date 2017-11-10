@@ -1,6 +1,7 @@
 package controller;
 
 import objects.Customer;
+import objects.FullNameCustomer;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import services.CustomerService;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.times;
@@ -74,4 +76,15 @@ public class HelloWorldControllerTest {
 
         verify(customerService, times(1)).saveCustomer(customer);
     }
+
+    @Test
+    public void testFullNames_returnFullNames() throws Exception {
+        String fullname = "sam Iam";
+        when(customerService.getCustomerFullNames()).thenReturn(Arrays.asList(new FullNameCustomer(fullname)));
+
+        assertEquals(fullname, helloWorldController.findAllFullNames().get(0).getFullName());
+
+        verify(customerService, times(1)).getCustomerFullNames();
+    }
+
 }

@@ -1,9 +1,11 @@
 package services;
 
 import objects.Customer;
+import objects.FullNameCustomer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.CustomerRepository;
+import repositories.FullNameCustomerRepository;
 
 import java.util.List;
 
@@ -12,6 +14,9 @@ public class CustomerService {
 
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
+    private FullNameCustomerRepository fullNameCustomerRepository;
 
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
@@ -23,5 +28,9 @@ public class CustomerService {
 
     public Customer saveCustomer(Customer customer) {
         return customerRepository.save(customer);
+    }
+
+    public List<FullNameCustomer> getCustomerFullNames() {
+        return fullNameCustomerRepository.findAllCustomersWithFullName();
     }
 }

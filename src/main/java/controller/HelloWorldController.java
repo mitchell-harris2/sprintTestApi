@@ -1,5 +1,6 @@
 package controller;
 
+import objects.FullNameCustomer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import objects.Customer;
 import services.CustomerService;
+
+import java.util.List;
 
 @RestController
 public class HelloWorldController {
@@ -17,6 +20,11 @@ public class HelloWorldController {
 	@GetMapping("/")
 	public ResponseEntity<String> findAll() {
 		return new ResponseEntity<String>("Hello World", HttpStatus.OK);
+	}
+
+	@GetMapping("/fullNames")
+	public List<FullNameCustomer> findAllFullNames() {
+		return customerService.getCustomerFullNames();
 	}
 	
 	

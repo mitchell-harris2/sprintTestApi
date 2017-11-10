@@ -83,7 +83,7 @@
   </dependencies>
  
 	<properties>
-	   <jackson.version>2.4.0</jackson.version>
+	   <jackson.version>2.7.2</jackson.version>
 	   <jaxb-api.version>2.2.11</jaxb-api.version>
 		<org.springframework-version>4.3.0.RELEASE</org.springframework-version>
 	</properties>

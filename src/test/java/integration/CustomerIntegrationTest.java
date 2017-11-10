@@ -32,7 +32,18 @@ public class CustomerIntegrationTest {
 
         ValidatableResponse response = given().queryParam("firstName", "sam")
                 .when().get("/stuff")
-                .then().body("size()", greaterThan(0));
+                .then().body("[0].firstName", is("sam"))
+                .body("[0].lastName", is("Iam"));
+
+    }
+
+    @Test
+    public void testGetFullNames() {
+        String fullName = "sam Iam";
+
+        ValidatableResponse response = given()
+                .when().get("/fullNames")
+                .then().body("[0].fullName", is(fullName));
 
     }
 }
