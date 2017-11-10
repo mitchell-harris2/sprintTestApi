@@ -30,10 +30,6 @@ public class CustomerIntegrationTest {
     public void testPostStuff_checkingQeueryParam() {
         Customer customer = new Customer("sam", "Iam");
 
-//        given().contentType("application/json").body(customer)
-//                .when().post("/stuff")
-//                .then().body("id", notNullValue());
-
         ValidatableResponse response = given().queryParam("firstName", "sam")
                 .when().get("/stuff")
                 .then().body("size()", greaterThan(0));
