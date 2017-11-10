@@ -14,6 +14,7 @@ import services.CustomerService;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.times;
@@ -87,4 +88,15 @@ public class HelloWorldControllerTest {
         verify(customerService, times(1)).getCustomerFullNames();
     }
 
+    @Test
+    public void testGetCustomerSortedByLastName() throws Exception {
+
+        List<Customer> sortedCustomers = new ArrayList<>();
+        sortedCustomers.add(new Customer("sam","Iam"));
+        when(customerService.getSortedCustomers()).thenReturn(sortedCustomers);
+
+        assertEquals(sortedCustomers, helloWorldController.getCustomersSortedByLastName());
+
+        verify(customerService, times(1)).getSortedCustomers();
+    }
 }

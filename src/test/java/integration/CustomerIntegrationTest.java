@@ -5,6 +5,7 @@ import objects.Customer;
 import org.junit.Test;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import static io.restassured.RestAssured.*;
@@ -44,6 +45,20 @@ public class CustomerIntegrationTest {
         ValidatableResponse response = given()
                 .when().get("/fullNames")
                 .then().body("[0].fullName", is(fullName));
+
+    }
+
+    @Test
+    public void testGetSortedCustomers() {
+
+        ValidatableResponse response = given()
+                .when().get("/sortedCustomers").then()
+                .body("[0].lastName", is("baggins"))
+                .body("[1].lastName", is("Iam"))
+                .body("[2].lastName", is("marx"))
+                .body("[3].lastName", is("saget"))
+                .body("[4].lastName", is("shore"))
+                .body("[5].lastName", is("vandelay"));
 
     }
 }

@@ -44,4 +44,9 @@ public class HelloWorldController {
 		customer = customerService.saveCustomer(customer);
 		return new ResponseEntity<Customer>(customer, HttpStatus.OK);
 	}
+
+	@GetMapping("/sortedCustomers")
+	public List<Customer> getCustomersSortedByLastName() {
+		return customerService.getSortedCustomers();
+	}
 }

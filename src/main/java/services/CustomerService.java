@@ -3,6 +3,7 @@ package services;
 import objects.Customer;
 import objects.FullNameCustomer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import repositories.CustomerRepository;
 import repositories.FullNameCustomerRepository;
@@ -32,5 +33,11 @@ public class CustomerService {
 
     public List<FullNameCustomer> getCustomerFullNames() {
         return fullNameCustomerRepository.findAllCustomersWithFullName();
+    }
+
+    public List<Customer> getSortedCustomers() {
+        Sort.Order order = new Sort.Order(Sort.Direction.ASC, "lastName").ignoreCase();
+        Sort sort = new Sort(order);
+        return customerRepository.findAll(sort);
     }
 }
