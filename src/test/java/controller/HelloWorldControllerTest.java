@@ -1,7 +1,7 @@
 package controller;
 
-import objects.Customer;
-import objects.FullNameCustomer;
+import entities.Customer;
+import entities.FullNameCustomer;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

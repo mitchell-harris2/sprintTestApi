@@ -1,4 +1,4 @@
-use sa;
+set schema sa;
 insert into customer (first_name, last_name) values ('sam','Iam');
 insert into customer (first_name, last_name) values ('bilbo','baggins');
 insert into customer (first_name, last_name) values ('art','vandelay');

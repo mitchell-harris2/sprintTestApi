@@ -1,8 +1,7 @@
 package services;
 
-import objects.Customer;
-import objects.FullNameCustomer;
-import org.apache.commons.collections.CollectionUtils;
+import entities.Customer;
+import entities.FullNameCustomer;
 import org.apache.commons.collections.IteratorUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

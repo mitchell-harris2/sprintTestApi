@@ -1,6 +1,6 @@
 package services;
 
-import objects.Customer;
+import entities.Customer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;

@@ -1,15 +1,10 @@
 package integration;
 
 import io.restassured.response.ValidatableResponse;
-import objects.Customer;
+import entities.Customer;
 import org.junit.Test;
 
-import java.net.URL;
-import java.util.Arrays;
-import java.util.HashMap;
-
 import static io.restassured.RestAssured.*;
-import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
